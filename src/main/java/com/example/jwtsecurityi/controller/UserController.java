@@ -22,7 +22,7 @@ public class UserController {
     //        'Authorization': 'Bearer ' + inMemoryToken }
 
 
-@GetMapping("/info")
+    @GetMapping("/info")
     public User getUserDetails(){
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userRepo.findByEmail(email).get();
