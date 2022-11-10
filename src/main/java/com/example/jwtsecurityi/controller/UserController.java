@@ -15,7 +15,14 @@ public class UserController {
     @Autowired
     private UserRepo userRepo;
 
-    @GetMapping("/info")
+    //When calling from JavaScript frontend you need in fetchOptions:
+    //method: "POST", or "GET"
+    //body: payload,
+    //headers:{'content-type': 'application/json',
+    //        'Authorization': 'Bearer ' + inMemoryToken }
+
+
+@GetMapping("/info")
     public User getUserDetails(){
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userRepo.findByEmail(email).get();
